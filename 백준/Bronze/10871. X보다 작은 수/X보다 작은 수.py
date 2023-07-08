@@ -5,4 +5,4 @@ line = list(map(int, input().split()))
 
 for i in line:
     if i < x:
-        print(i, end=' ')
+        print(i)
