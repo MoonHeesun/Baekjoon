@@ -13,7 +13,6 @@ def fn(curr, total_pay):
         return
     if (curr+t_list[curr]) <= n:
         fn(curr+t_list[curr], total_pay+p_list[curr])
-    # fn(curr+1, total_pay)
     fn(curr+1, total_pay)
 
 answer = 0
