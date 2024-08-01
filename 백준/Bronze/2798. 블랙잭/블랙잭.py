@@ -1,14 +1,15 @@
-# 블랙잭 시간복잡도 줄이기
-N, M = map(int, input().split())
-card_num = list(map(int, input().split()))
+import sys
 
-a = 0
-for i in range(0, N-2):
-    for j in range(i+1, N-1):
+N, M = map(int, sys.stdin.readline().split(' '))
+N_lst = list(map(int, sys.stdin.readline().split(' ')))
+
+result = 0
+for i in range(N):
+    for j in range(i+1, N):
         for k in range(j+1, N):
-            if M < (card_num[i]+card_num[j]+card_num[k]) :
+            sum = N_lst[i] + N_lst[j] + N_lst[k]
+            if sum > M or sum < result:
                 continue
-            else:
-                a = max(a, card_num[i]+card_num[j]+card_num[k])
+            result = sum
 
-print(a)   
+print(result)
