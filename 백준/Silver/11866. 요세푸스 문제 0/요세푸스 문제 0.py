@@ -1,20 +1,18 @@
 from collections import deque
+import sys
 
-n, k = map(int, input().split())
-people = deque([i+1 for i in range(n)])
-permu = []
-a = 1
+N, K = map(int, sys.stdin.readline().split(' '))
+circle = deque()
 
-while len(permu) != n:
-        if a != k:
-            people.append(people[0])
-            people.popleft()
-            a += 1
-        else:
-            permu.append(people[0])
-            people.popleft()
-            a = 1
-            
-print('<', end="")
-print(*permu, sep=", ", end="")
-print('>')
+for i in range(1, N+1):
+    circle.append(i)
+
+permutation = []
+while len(circle) != 0:
+    circle.rotate(-(K-1))
+    num = circle.popleft()
+    permutation.append(num)
+
+print("<", end='')
+print(*permutation, sep=', ', end='')
+print(">")
