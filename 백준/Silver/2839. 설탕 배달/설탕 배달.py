@@ -1,14 +1,12 @@
-N = int(input())
+sugar=int(input())
+bag=0
 
-num = []
-
-for i in range(1001):
-    for j in range(1667):
-        mul = (5*i)+(3*j)
-        if mul == N:
-            num.append((i+j))
-
-if len(num) > 0:
-    print(min(num))
+while sugar>=0:
+    if sugar%5==0:
+        bag+=(sugar//5)
+        print(bag)
+        break
+    sugar-=3
+    bag+=1
 else:
     print(-1)
