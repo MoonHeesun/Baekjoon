@@ -1,22 +1,25 @@
-n = int(input())
-t_list = []
-p_list = []
-for day in range(n):
-    t, p = map(int, input().split())
-    t_list.append(t)
-    p_list.append(p)
-
-def fn(curr, total_pay):
+def get_max_revenue(current_day, total_pay):
     global answer
-    if curr == n:
+
+    # 마지막 날짜와 동일할 경우, 
+    if current_day == n:
         answer = max(total_pay, answer)
         return
-    if (curr+t_list[curr]) <= n:
-        fn(curr+t_list[curr], total_pay+p_list[curr])
-    fn(curr+1, total_pay)
+    if (current_day+t_lst[current_day]) <= n:
+        get_max_revenue(current_day+t_lst[current_day], total_pay+p_lst[current_day])
+    get_max_revenue(current_day+1, total_pay)
+
+n = int(input())
+t_lst = []
+p_lst = []
+
+for day in range(n):
+    t, p = map(int, input().split())
+    t_lst.append(t)
+    p_lst.append(p)
 
 answer = 0
 res = []
 for i in range(n):
-    fn(i, 0)
+    get_max_revenue(i, 0)
 print(answer)
